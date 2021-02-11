@@ -5,12 +5,27 @@ import axios from "axios";
 
 export function fetchAPIResponse(city){
     //we return a function that will dispatch the action
+    console.log('fetchAPIResponse')
     return function(dispatch){
         //make the axios call for the API
         //that is my key, you can get yours is free.
-
+        console.log('fetchAPIResponse2')
         // --- ADD YOUR APIXU API KEY ----- //
-        axios.get("https://api.apixu.com/v1/current.json?key=" + city ).then(response=>{
+
+        // Add your API Key
+        
+
+        // cure link connected to API
+
+        //let cure = "https://cors-anywhere.herokuapp.com/"
+
+
+        require('dotenv').config();
+
+
+        const api_key = process.env.API_KEY;
+        
+        axios.get(`http://api.weatherstack.com/current?access_key=${api_key}=${city}`).then(response=>{
             
             //get the location object
             //due the structure of the API response
@@ -37,7 +52,7 @@ export function fetchAPIResponse(city){
             for (var key2 in response.data.current) {
                arr2.push(response.data.current[key2]);
             
-            } 
+            }
             //search the index of the conditons array
             console.log(arr2);
             //splice (remove) it from the array
@@ -47,7 +62,7 @@ export function fetchAPIResponse(city){
             // --- remember each ACTION has its own property
             //dispatch the FETCH_WEATHER action
             dispatch({type:"FETCH_WEATHER", payload:arr2});
-
+            console.log(response.data)
             let arr3 = [];
             for (var key3 in response.data.current.condition) {
               arr3.push(response.data.current.condition[key3]);

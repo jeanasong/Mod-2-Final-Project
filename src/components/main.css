@@ -1,0 +1,42 @@
+.container1 {
+     right: 16px;
+     position: absolute;
+     top: 8px;
+}
+
+.Logout{
+    background-color: #6277D7; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 7px 22px;
+    margin: 4px 2px;
+    
+}
+
+.login{
+    background-color:  #82CBCB;/* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 7px 22px;
+    margin: 4px 2px;
+}
+
+.Registration{
+    background-color: #6E78A8; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 7px 22px;
+    margin: 4px 2px;
+}

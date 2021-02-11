@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import Main from "./components/main";
-
+import Login from "./Pages/Login";
+// import Logout from "./Pages/Logout"
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Create from './Create/Create';
 //here we import the store
 //----STORE
 import StoreRef from "./store/store";
 //store provider
 //the provider gives us access to the state
 import {Provider} from "react-redux";
+import Main from './components/main';
+import Logout from './Pages/Logout';
+import Register from './Pages/registration.js';
 
 // Provider needs a property called store
 //on which we add our store file
@@ -24,13 +29,26 @@ import {Provider} from "react-redux";
 class App extends Component {
   render() {
     return (
+      <Router>
       <Provider store={StoreRef}>
         <div className="container">
           <h1>Weather App </h1>
-          <Main />
+          {/* <Main /> */}
+          <Switch>
+          <Route exact path='/' render={ (props) => <Login {...props} />} />
+            <Route path="/create">
+              <Create />
+            </Route>
+            <Route exact path='/main' render={ (props) => <Main {...props} />} />
+
+            <Route exact path='/logout' render={ (props) => <Logout {...props} />} />
+
+            <Route exact path='/register' render={ (props) => <Register {...props} />} />
+          </Switch>
         
         </div>
       </Provider>
+      </Router>
     );
   }
 }

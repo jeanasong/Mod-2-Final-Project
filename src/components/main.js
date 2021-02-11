@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './main.css';
 
 
 //import the connect and bindActionsCreators functions
@@ -10,6 +10,10 @@ import { bindActionCreators } from 'redux';
 
 //import the action
 import {fetchAPIResponse} from "../actions/fetch_api_data";
+// import the react-router-dom
+import {Link} from 'react-router-dom';
+
+
 
 class Main extends Component {
   //innerState 
@@ -46,8 +50,14 @@ class Main extends Component {
   }
 
   render() {
+    console.log(this.props.apiLocation)
     return (
       <div>
+        <div className='container1'>
+          <Link to='/' className='login'>Login</Link>
+          <Link to='/logout' className='Logout'>Logout</Link>
+          <Link to='/register' className='Registration'>Register</Link>
+        </div>
            <div className="form">
 
             <input name="city" placeholder="Paris" onChange ={this.changeHandler} />
@@ -111,9 +121,7 @@ class Main extends Component {
               <p>Humidity</p>
               <p className="data">{this.props.apiResponse[13]} %</p>
               </div>
-
             </div> 
-          
         </div>
       </div>
     );
